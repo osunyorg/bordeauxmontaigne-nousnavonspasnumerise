@@ -1,8 +1,4 @@
 ---
 title: Menu principal
-items:
-- title: je suis la je test
-  target: "/je-suis-la-je-test/"
-  kind: page
-  children: []
+items: []
 
