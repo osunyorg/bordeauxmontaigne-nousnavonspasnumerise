@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ .Title }}</title>
+    <link rel="icon" type="image/ico" href="/assets/images/favicons/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/assets/pagedjs/pagedjs.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/pagedjs/interface.css" />
+    {{ $styles := resources.Get "sass/print.sass" | toCSS }}
+    {{ if hugo.IsProduction }}
+      {{ $styles = resources.Get "sass/print.sass" | toCSS | postCSS | minify | fingerprint }}
+    {{ end }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+  </head>
+  <body>
+    {{ with site.GetPage "/" }}
+      <section class="cover">
+        <img src="/assets/images/imprimer/bg.jpeg">
+      </section>
+      <section class="blank"></section>
+      <section class="intro">
+        <h2>{{ .Params.summary }}</h2>
+        {{ with index .Params.contents 0 }}
+          {{ partial "PrepareHTML" .data.text }}
+        {{ end }}
+      </section>
+    {{ end }}
+    {{ with site.GetPage "/pages" }}
+      {{ range .Pages }}
+
+        {{ if eq .Params.Title "Book"}}
+          <section class="city">
+            <h2>{{ .Title }}</h2>
+            <h3>{{ .Params.summary }}</h3>
+            {{ range .Params.contents }}
+              {{ if eq .template "chapter" }}
+                {{ partial "PrepareHTML" .data.text }}
+              {{ end }}
+            {{ end }}
+          </section>
+        {{ end }}
+        <!-- <section class="city">
+          <h2>{{ .Title }}</h2>
+          <h3>{{ .Params.summary }}</h3>
+          {{ range .Params.contents }}
+            {{ if eq .template "chapter" }}
+              {{ partial "PrepareHTML" .data.text }}
+            {{ end }}
+          {{ end }}
+        </section> -->
+      {{ end }}
+    {{ end }}
+    <!-- <section class="last-page">
+      {{ with site.GetPage "/" }}
+        {{ range .Params.contents }}
+          {{ if eq .template "chapter" }}
+            {{ partial "PrepareHTML" .data.text }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </section> -->
+    <section class="back" id="back">
+      <img src="/assets/images/imprimer/back.jpg">
+    </section>
+    <script>
+      const anchorTags = document.getElementsByTagName('a');
+      for (let i = anchorTags.length - 1; i >= 0; i--) {
+        const aTag = anchorTags[i];
+        const noteTag = document.createElement('note');
+        noteTag.textContent = aTag.getAttribute('href');
+        aTag.append(noteTag);
+      }
+    </script>
+    <script type="text/javascript" src="/assets/pagedjs/paged.polyfill.min.js" defer async></script>
+  </body>
+</html>

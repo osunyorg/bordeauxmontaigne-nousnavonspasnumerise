@@ -1,0 +1,12 @@
+@page
+    counter-reset: footnote 0
+    @footnote
+        float: bottom
+
+note 
+    float: footnote
+    font-size: 7pt
+    line-height: 11pt
+
+[data-footnote-call]::after
+    padding-left: 2pt

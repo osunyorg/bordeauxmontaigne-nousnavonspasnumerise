@@ -1,6 +1,6 @@
 /* paged.js interface  */
 @media screen {
-  #print {
+#print {
     position: fixed;
     z-index: 20000;
     background: black;
@@ -17,3 +17,4 @@
     display: none;
   }
 }
+  
