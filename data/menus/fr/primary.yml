@@ -1,20 +1,4 @@
 ---
 title: Menu principal
-items:
-- title: Livrable
-  target: "/livrable/"
-  kind: page
-  children:
-  - title: Chapitre 1
-    target: "/livrable/chapitre-1/"
-    kind: page
-    children: []
-  - title: Chapitre 2
-    target: "/livrable/chapitre-2/"
-    kind: page
-    children: []
-  - title: Chapitre 3
-    target: "/livrable/chapitre-3/"
-    kind: page
-    children: []
+items: []
 
