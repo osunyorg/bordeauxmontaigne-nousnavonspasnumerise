@@ -9,7 +9,7 @@ items:
     target: "/livrable/chapitre-1/"
     kind: page
     children: []
-  - title: 'Chapitre 2 : 6 mois plus tard'
+  - title: Chapitre 2
     target: "/livrable/chapitre-2/"
     kind: page
     children: []
