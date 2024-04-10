@@ -17,8 +17,4 @@ items:
     target: "/livrable/chapitre-3/"
     kind: page
     children: []
-- title: Intervenants
-  target: "/intervenants/"
-  kind: page
-  children: []
 
