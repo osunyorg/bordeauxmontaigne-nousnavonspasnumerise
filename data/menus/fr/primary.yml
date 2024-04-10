@@ -1,10 +1,6 @@
 ---
 title: Menu principal
 items:
-- title: Book
-  target: "/book/"
-  kind: page
-  children: []
 - title: Intervenants
   target: "/intervenants/"
   kind: page
