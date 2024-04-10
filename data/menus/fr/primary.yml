@@ -5,7 +5,7 @@ items:
   target: "/livrable/"
   kind: page
   children:
-  - title: Chapitre 1
+  - title: 'Chapitre 1 : Mars 2023'
     target: "/livrable/chapitre-1/"
     kind: page
     children: []
