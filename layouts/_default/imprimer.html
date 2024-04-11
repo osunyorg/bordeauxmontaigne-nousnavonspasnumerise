@@ -39,6 +39,9 @@
             {{ end }}
 
             {{ if eq .template "chapter" }}
+              {{ with .title }}
+                <h4>{{ . }}</h4>
+              {{ end}}
               {{ partial "PrepareHTML" .data.text }}
             {{ end }}
           {{ end }}
