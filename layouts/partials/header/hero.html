@@ -18,7 +18,7 @@
 {{ $subtitle_is_summary = true }}
 {{ end }}
 {{ end }}
-
+<img class="bg-image" src="/assets/images/hero.webp" alt="tablette grisée">
 <header
   class="hero {{ if .image }}hero--with-image hero--image-{{- $direction }}{{ end }} {{ if $breadcrumb_is_after_hero }} hero--no-margin {{ end }}">
   <div class="hero-top-container">
@@ -39,9 +39,7 @@
       {{ partial "header/breadcrumbs.html" .context }}
       {{ end }}
       <div class="content">
-        <img src="/assets/images/hero.webp" alt="tablette grisée">
-  
-        <div class="hero-text">
+        <!-- <div class="hero-text">
           {{ if or $subtitle $description }}
           <hgroup>
             <h1>Numérisé</h1>
@@ -55,17 +53,17 @@
           {{ else }}
           <h1>Numérisé</h1>
           {{ end }}
-  
+
           {{ with $button }}
           {{ if and .display .target .label }}
           <a href="{{ .target }}" class="btn">{{ .label }}</a>
           {{ end }}
           {{ end }}
-  
+
           {{ if .hero_text_complement }}
           {{ partial .hero_text_complement .context }}
           {{ end }}
-        </div>
+        </div> -->
         <!-- {{ if .image }}
           <figure>
             {{ partial "commons/image.html"
@@ -106,7 +104,12 @@
   </div>
   {{ end }}
 </header>
-
+<div class="title">
+  <div class="title-flex">
+    <p>Nous n’avons pas </p>
+    <p>NUMÉRISÉ</p>
+  </div>
+</div>
 {{ if and $display_breadcrumb $breadcrumb_is_after_hero }}
 <div class="container breadcrumb-container">
   {{ partial "header/breadcrumbs.html" .context }}

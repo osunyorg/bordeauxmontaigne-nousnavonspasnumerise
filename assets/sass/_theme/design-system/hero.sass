@@ -1,6 +1,21 @@
+.bg-image
+    z-index: 99
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    max-width: 700px;
+    width: 60vw;
+    z-index: 99;
+    transform: rotate(10deg);
 .hero
+    width: fit-content
+    span
+        line-height: 20px
     margin: 0
+    overflow-x: hidden
+    transform: rotate(10deg);
     .container
+        position: absolute
         padding: 0
         width: fit-content
     .hero-top-container
@@ -17,6 +32,7 @@
         span
             text-transform: uppercase
             font-weight: bold
+            font-size: 13px
             margin-right: $spacing-2
             &:nth-child(odd)
                 text-align: right
@@ -25,6 +41,7 @@
         text-transform: uppercase
         font-weight: bold
         span
+            font-size: 13px
             margin-right: $spacing-2
     .cross-names
         display: flex
@@ -33,7 +50,7 @@
         gap: $spacing-2
         margin-left: 80px
         img
-            transform: translateY(8px);
+            transform: translateY(2px);
 
 .hero
     // Support gradients
@@ -141,3 +158,5 @@
         @include media-breakpoint-down(desktop)
             margin-bottom: $spacing-5
 
+.title
+    text-transform: uppercase
