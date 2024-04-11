@@ -162,7 +162,7 @@ small, .small
             margin-top: 0
 
 .content
-    section 
+    section
         @extend %multiple-lists
 
 @mixin inherit-text
@@ -200,7 +200,7 @@ p
 
 p + ul,
 p + ol
-    margin-top: 0
+        margin-top: 0
 
 figcaption
     a
@@ -221,6 +221,12 @@ a,
             content: none
     &.glightbox
         text-decoration: none
+    &:has(.imprimer-button)
+        text-decoration: none
+        padding: $spacing-2 $spacing-3
+        font-size: 18px
+        border-radius: 2px
+        white-space: nowrap
 
 .chip
     @include meta
@@ -302,4 +308,3 @@ sup
         @include icon($name)
         &::before
             margin-inline-end: pxToRem(5)
-

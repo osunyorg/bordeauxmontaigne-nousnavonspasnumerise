@@ -37,9 +37,6 @@
       </div>
     </div>
     <div class="container">
-      {{ if and $display_breadcrumb (eq site.Params.breadcrumb.position "hero-start") }}
-      {{ partial "header/breadcrumbs.html" .context }}
-      {{ end }}
       <div class="content">
         <!-- <div class="hero-text">
             {{ if or $subtitle $description }}
@@ -122,3 +119,10 @@
   {{ partial "header/breadcrumbs.html" .context }}
 </div>
 {{ end }}
+
+
+<div class="container">
+  {{ if and $display_breadcrumb (eq site.Params.breadcrumb.position "hero-start") }}
+  {{ partial "header/breadcrumbs.html" .context }}
+  {{ end }}
+</div>
