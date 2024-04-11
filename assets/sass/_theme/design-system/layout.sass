@@ -3,10 +3,9 @@
 *::after
     box-sizing: border-box
 
-::selection 
-  background: $blue;
-  color: $color-background;
-
+::selection
+    background: $blue
+    color: $color-background
 
 \:root
     --spacing-1: #{$spacing-1}
@@ -62,6 +61,18 @@ ol
             display: inline
 
 .document-content
+    h2
+        font-size: 48px
+        font-weight: 600
+
+    p
+        font-size: 18px
+        font-weight: 600
+
+    h2, .chapter, .grid
+        @media screen and (min-width: 768px)
+            padding-left: 25vw
+
     .container > .lead
         margin-bottom: $spacing-5
 
@@ -73,7 +84,7 @@ ol
 
 details
     &:not([open]):hover
-       summary::after
+        summary::after
             transform: translateY(5px)
     summary
         @include meta
@@ -87,7 +98,7 @@ details
             transition: transform 0.25s
         &::marker
             content: none
-        &::-webkit-details-marker 
+        &::-webkit-details-marker
             display: none
     &[open]
         summary
