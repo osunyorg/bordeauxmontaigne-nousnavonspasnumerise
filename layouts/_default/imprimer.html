@@ -22,8 +22,14 @@
       
       <section class="intro">
         <h2>{{ .Params.summary }}</h2>
-        {{ with index .Params.contents 0 }}
-          {{ partial "PrepareHTML" .data.text }}
+         {{ range .Params.contents }}
+          {{ if eq .kind "heading" }}
+            <h4> {{ .title }}</h4>
+          {{ end }}
+
+          {{ if eq .template "chapter" }}
+            {{ partial "PrepareHTML" .data.text }}
+          {{ end }}
         {{ end }}
       </section>
     {{ end }}
