@@ -1,14 +1,19 @@
+html
+    overflow-x: hidden
 .bg-image
-    z-index: 99
+    z-index: -2
     position: absolute;
+    @include media-breakpoint-down(md)
+        position: relative
     right: -120px;
     top: -120px;
     max-width: 700px;
     width: 60vw;
-    z-index: 99;
     transform: rotate(10deg);
 .hero
     width: fit-content
+    @include media-breakpoint-down(md)
+        width: 100%
     span
         line-height: 20px
     margin: 0
@@ -49,14 +54,16 @@
         align-items: flex-start
         gap: $spacing-2
         margin-left: 80px
+        @include media-breakpoint-down(md)
+            margin-left: 0
         img
             transform: translateY(2px);
 
 .hero
     // Support gradients
-    background: $hero-background-color
-    // Fallback color
-    background-color: $hero-background-color
+    // background: $hero-background-color
+    // // Fallback color
+    // background-color: $hero-background-color
     color: $hero-color
     min-height: $hero-height
     padding-bottom: $spacing-5
@@ -157,6 +164,53 @@
         margin-top: 0
         @include media-breakpoint-down(desktop)
             margin-bottom: $spacing-5
-
 .title
+    transform: rotate(-5deg) translateY(-200px) translateX(50px)
+    @include media-breakpoint-down(lg)
+        transform: rotate(-5deg) translateY(-100px) translateX(50px)
     text-transform: uppercase
+    font-style: italic
+    width: fit-content
+    #not-flex
+        overflow: hidden
+        font-size: 42px
+        margin-left: 40px
+        @include media-breakpoint-down(lg)
+            font-size: 24px
+            margin-left: 24px
+        @include media-breakpoint-down(sm)
+            font-size: 16px
+            margin-left: 10px
+
+    h1
+        line-height: 0.8;
+        width: fit-content
+        position: relative
+        @include media-breakpoint-down(lg)
+            font-size: 100px
+        @include media-breakpoint-down(sm)
+            font-size: 40px
+
+        &::before
+            z-index: -1
+            position: absolute
+            content: ""
+            display: block
+            width: 100%
+            height: 200px
+            background-color: white
+            transform: translateY(-40px)
+        &::after
+            content: ""
+            display: block
+            width: 110%
+            height: 15px
+            background-color: $color-text
+            margin-top: $spacing-3
+            margin-bottom: $spacing-3
+            transform: translateX(-250px)
+            @include media-breakpoint-down(lg)
+                height: 10px
+            @include media-breakpoint-down(sm)
+                height: 5px
+                transform: translateX(-100px);
