@@ -17,4 +17,8 @@ items:
   target: "/plan-du-site/"
   kind: page
   children: []
+- title: Lire
+  target: "/chapitre-1/"
+  kind: page
+  children: []
 
