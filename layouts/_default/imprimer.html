@@ -15,9 +15,11 @@
   <body>
     {{ with site.GetPage "/" }}
       <section class="cover">
-        <img src="/assets/images/imprimer/bg.jpeg">
+        <img src="/assets/images/imprimer/front.jpg">
       </section>
+      
       <section class="blank"></section>
+      
       <section class="intro">
         <h2>{{ .Params.summary }}</h2>
         {{ with index .Params.contents 0 }}
@@ -25,31 +27,25 @@
         {{ end }}
       </section>
     {{ end }}
-    {{ with site.GetPage "/pages" }}
-      {{ range .Pages }}
 
-        {{ if eq .Params.Title "Book"}}
-          <section class="city">
-            <h2>{{ .Title }}</h2>
-            <h3>{{ .Params.summary }}</h3>
-            {{ range .Params.contents }}
-              {{ if eq .template "chapter" }}
-                {{ partial "PrepareHTML" .data.text }}
-              {{ end }}
-            {{ end }}
-          </section>
-        {{ end }}
-        <!-- <section class="city">
+    {{ with site.GetPage "/pages/livrable/"}}
+      {{ range .Pages }}
+        <section class="chapter">
           <h2>{{ .Title }}</h2>
           <h3>{{ .Params.summary }}</h3>
           {{ range .Params.contents }}
+            {{ if eq .kind "heading" }}
+              <h4> {{ .title }}</h4>
+            {{ end }}
+
             {{ if eq .template "chapter" }}
               {{ partial "PrepareHTML" .data.text }}
             {{ end }}
           {{ end }}
-        </section> -->
+        </section>
       {{ end }}
     {{ end }}
+
     <!-- <section class="last-page">
       {{ with site.GetPage "/" }}
         {{ range .Params.contents }}
@@ -59,9 +55,11 @@
         {{ end }}
       {{ end }}
     </section> -->
+    
     <section class="back" id="back">
       <img src="/assets/images/imprimer/back.jpg">
     </section>
+
     <script>
       const anchorTags = document.getElementsByTagName('a');
       for (let i = anchorTags.length - 1; i >= 0; i--) {
@@ -71,6 +69,7 @@
         aTag.append(noteTag);
       }
     </script>
+
     <script type="text/javascript" src="/assets/pagedjs/paged.polyfill.min.js" defer async></script>
   </body>
 </html>

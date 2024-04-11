@@ -8,12 +8,14 @@
 
 .menu
     display : flex
-    flex-wrap: wrap
-    gap: 0px 10px;
+    flex-wrap: nowrap
     align-items: center
-    justify-content: center
-    font-size: 14px
+    justify-content: space-between
+    font-size: 13px
     font-weight: bold
+    width: 100%
+    gap: 0px 2vw;
+
     @include media-breakpoint-down(desktop)
         -webkit-flex-basis: 100vw
         display: none
@@ -21,6 +23,14 @@
         margin-top: $spacing-3
         max-height: var(--header-menu-max-height)
         overflow: auto
+    div
+        display : flex
+        flex-wrap: wrap
+        gap: 0px 6px;
+        justify-content: space-between
+        width: 100%
+        p
+            height: fit-content
     a,
     a:focus,
     a:active
@@ -129,6 +139,7 @@
                             align-items: baseline
                             display: flex
                             gap: var(--grid-gutter)
+                            width: full
                         .dropdown-menu-title
                             width: columns(5)
                         .nav-level-2

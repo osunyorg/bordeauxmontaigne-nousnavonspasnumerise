@@ -1,19 +1,33 @@
+$body-font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
+$display-font-family: "Epilogue", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
+
+    
 *
-    font-family: 'Calvino', serif
+    font-family: $body-font-family
 
 h1
+    font-family: $display-font-family
     font-size: 2em
 
 h2
-    color: #FF4E07
+    font-family: $body-font-family
     font-size: 30pt
-    line-height: 30pt
+    line-height: 36pt
     margin-bottom: 10pt
 
 h3
-    font-size: 12pt
-    line-height: 14pt
+    font-family: $body-font-family
+    font-size: 20pt
+    line-height: 24pt
     font-weight: bold
+
+h4
+    font-family: $body-font-family
+    font-size: 12pt
+    margin-top: 20pt
+    margin-bottom: 10pt
+    line-height: 14pt
+    font-weight: semi-bold
 
 p
     font-size: 9pt
@@ -43,7 +57,7 @@ i
 .intro
     break-before: right
 
-.city
+.chapter
     break-before: left
     &__illustration
         margin-top: 30pt
@@ -52,6 +66,8 @@ i
         margin: 30pt auto
     h2
         break-before: right
+    h4
+        break-before: always
 
 .definitions
     break-before: right
