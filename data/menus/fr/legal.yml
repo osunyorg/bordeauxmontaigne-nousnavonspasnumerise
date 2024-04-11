@@ -21,4 +21,8 @@ items:
   target: "/chapitre-1/"
   kind: page
   children: []
+- title: Imprimer
+  target: "/chapitre-1/"
+  kind: page
+  children: []
 
