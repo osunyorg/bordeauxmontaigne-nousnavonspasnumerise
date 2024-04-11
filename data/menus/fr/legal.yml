@@ -9,10 +9,6 @@ items:
   target: "/accessibilite/"
   kind: page
   children: []
-- title: Plan du site
-  target: "/plan-du-site/"
-  kind: page
-  children: []
 - title: Lire
   target: "/chapitre-1/"
   kind: page
@@ -23,6 +19,10 @@ items:
   children: []
 - title: Mentions légales
   target: "/mentions-legales/"
+  kind: page
+  children: []
+- title: Plan du site
+  target: "/plan-du-site/"
   kind: page
   children: []
 
