@@ -1,10 +1,6 @@
 ---
 title: Informations légales
 items:
-- title: Accessibilité
-  target: "/accessibilite/"
-  kind: page
-  children: []
 - title: Lire
   target: "/chapitre-1/"
   kind: page
