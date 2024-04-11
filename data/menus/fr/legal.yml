@@ -1,10 +1,6 @@
 ---
 title: Informations légales
 items:
-- title: Politique de confidentialité
-  target: "/politique-de-confidentialite/"
-  kind: page
-  children: []
 - title: Accessibilité
   target: "/accessibilite/"
   kind: page
