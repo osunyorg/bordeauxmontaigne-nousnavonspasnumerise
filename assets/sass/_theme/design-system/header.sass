@@ -1,7 +1,6 @@
 header#document-header
     background: $header-background
     color: $header-color
-    position: fixed
     left: 0
     transition: transform $header-sticky-transition, background $header-sticky-transition
     top: 0
@@ -97,7 +96,7 @@ header#document-header
             align-items: center
             display: flex
             flex-wrap: wrap
-            justify-content: center
+            justify-content: space-between
         .header-button
             @include button-reset
             display: none
