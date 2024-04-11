@@ -1,0 +1,306 @@
+.block-pages
+    .top
+        a
+            text-decoration: none
+    .grid, .cards, .list
+        article
+            position: relative
+            display: flex
+            flex-direction: column
+            .media
+                @include handle-svg-fit
+                order: -1
+                margin-bottom: $spacing-3
+                &:empty
+                    display: none
+                img
+                    display: block
+                    aspect-ratio: 16/9
+                    object-fit: cover
+                    width: 100%
+        .page-title
+            @include h3
+            a
+                @include stretched-link(before)
+                text-decoration: none
+                background-color: $color-text
+                color: $color-background
+                padding: $spacing-2 $spacing-3
+                font-size: 18px
+                border-radius: 2px
+                white-space: nowrap
+            + p
+                margin-top: $spacing-2
+
+    @include media-breakpoint-up(desktop)
+        .top
+            margin-bottom: $spacing-4
+
+    @include media-breakpoint-down(desktop)
+        .top
+            .block-title
+                @include h5
+        .description
+            @include h2
+        article
+            margin-top: $spacing-3
+
+    @include in-page-without-sidebar
+        .top
+            a
+                @include icon(arrow, after, true)
+                @include hover-translate-icon
+            .description
+                @include h2
+
+    &--grid
+        .top
+            @include top-flex
+        .grid
+            a
+                @include icon(arrow, after, true)
+                @include hover-translate-icon(after)
+        @include media-breakpoint-up(desktop)
+            .grid
+                @include grid(2)
+                @include in-page-without-sidebar
+                    @include grid(3)
+
+    &--cards
+        background-color: $block-pages-card-background
+        padding-bottom: var(--grid-gutter)
+        padding-top: var(--grid-gutter)
+        *:not(.heading) + &
+            margin-top: 0
+        .blocks &:last-of-type
+            margin-bottom: 0
+        .top
+            @include top-flex
+        .cards
+            @include grid(2, desktop)
+            @include in-page-without-sidebar
+                @include grid(3)
+        // TODO: move this //
+        .block-gallery + &,
+        .block-pages--cards + &
+            margin-top: 0
+        // ----------------- //
+        .card
+            padding: $spacing-3
+            background-color: $block-pages-card-page-background
+            transition: background 0.3s, color 0.3s
+            display: flex
+            flex: auto
+            flex-direction: column
+            min-height: 320px
+            &,
+            a
+                color: $block-pages-card-page-color
+            .media
+                margin-bottom: 0
+                margin-left: -$spacing-3
+                margin-right: -$spacing-3
+                margin-top: -$spacing-3
+                img
+                    min-width: 100%
+            .more
+                @include arrow-right-hover
+                @include icon-block(arrow-right, after)
+                @include link($block-pages-card-page-color)
+                position: relative
+                margin-top: auto
+                padding-top: $spacing-3
+                display: flex
+                justify-content: space-between
+                align-items: center
+            &:hover
+                .more:after
+                    opacity: 1
+                    transform: translateX(0)
+            a,
+            .more
+                transition: text-decoration-color .3s ease, color .3s ease
+            &:hover
+                background-color: $block-pages-card-page-background-hover
+                &, a, .more
+                    color: $block-pages-card-page-color-hover
+                .more
+                    text-decoration-color: $block-pages-card-page-color-hover
+    &--list
+        ul
+            @include list-reset
+            li
+                display: block
+                + li
+                    margin-top: $spacing-2
+                > a
+                    @include icon(arrow, before, true)
+                        padding-right: $spacing-2
+                    @include hover-translate-icon(before, 5)
+                    @extend %underline-on-hover
+                article
+                    .page-title
+                        @include h3
+                        a
+                            @include icon(arrow, after, true)
+                            @include hover-translate-icon(after)
+                            @extend %underline-on-hover
+        @include media-breakpoint-down(desktop)
+            .top
+                margin-bottom: $spacing-2
+            ul
+                margin-top: $spacing-3
+        @include media-breakpoint-up(desktop)
+            ul:not(.title-only)
+                li + li
+                margin-top: var(--grid-gutter)
+                article
+                    gap: var(--grid-gutter)
+                    flex-direction: row
+                    .media
+                        flex-shrink: 0
+                        margin-bottom: 0
+        @include in-page-with-sidebar
+            .block-content
+                .top
+                    margin-bottom: $spacing-3
+                ul.title-only
+                    @include grid(2, desktop, 0)
+                    display: flex
+                    li
+                        margin-top: 0
+                        a
+                            @include meta
+                article
+                    gap: var(--grid-gutter)
+                    .media
+                        width: columns(2)
+                    .page-content
+                        width: columns(6)
+
+        @include in-page-without-sidebar
+            .block-title
+                a
+                    @include stretched-link(before)
+            .top
+                .description
+                    p
+                        @include h2
+            article
+                .media
+                    width: columns(2)
+                .page-content
+                    width: columns(4)
+            &:not(.with-description)
+                ul.title-only
+                    @include grid(4, desktop, $spacing-1)
+                    grid-column: 1 / 13
+                    li
+                        margin-top: 0
+                ul:not(.title-only)
+                    @include grid(2, desktop)
+                    li + li
+                        margin-top: 0
+            &.with-description
+                .block-content
+                    @include grid(12, desktop, $spacing-4)
+                    .top
+                        align-items: initial
+                        grid-column: 1 / 8
+                        margin-bottom: 0
+                        display: grid
+                        grid-template-rows: subgrid
+                        grid-row: span 2
+                        .block-title
+                            width: auto
+                        .description
+                            @include body-text
+                            margin-top: 0
+                    // If page description
+                    .top + ul
+                        grid-column: 9 / 13
+                        grid-row: 2
+                        display: block
+                        li + li
+                        margin-top: $spacing-2
+                        article
+                            margin-top: $spacing-5
+                &.with-images
+                    .top
+                        grid-column: 1 / 7
+                    .top + ul
+                        grid-column: 7 / 13
+
+    &--alternate
+        .top
+            @include top-flex
+        .grid
+            article .media img
+            aspect-ratio: unset
+        @include media-breakpoint-up(desktop)
+            article
+                width: columns(4)
+                &:not(:first-child)
+                    margin-top: -5%
+                &:nth-child(even)
+                    margin-left: auto
+                &.image-portrait
+                    + .image-portrait
+                        margin-top: -30%
+                    + .image-square,
+                    + .image-landscape
+                        margin-top: -15%
+        @include in-page-without-sidebar
+            .top
+                .description
+                    @include body-text
+            .grid
+                width: columns(10)
+                margin-left: auto
+                margin-right: auto
+                article
+                    width: columns(4)
+    &--large
+        .top
+            @include top-flex
+        .page
+            position: relative
+            + .page
+                margin-top: $spacing-5
+            .more
+                @include icon(arrow, after, true)
+                @include hover-translate-icon(after)
+            &:hover .more:after
+                transform: translateX(#{pxToRem(10)})
+            &-title a
+                @include stretched-link
+            .media
+                img
+                    aspect-ratio: 1
+        @include media-breakpoint-up(desktop)
+            .page
+                flex-direction: row
+                gap: var(--grid-gutter)
+
+        @include in-page-with-sidebar
+            .page
+                &-title
+                    @include h2
+                    margin-bottom: space(4)
+                &-content
+                    flex: 1
+                .media
+                    flex: 1
+        @include in-page-without-sidebar
+            .top
+                .description
+                    @include body-text
+            .page
+                align-items: center
+                &-title
+                    @include lead
+                    margin-bottom: space(4)
+                &-content
+                    width: columns(5)
+                .media
+                    width: columns(6)
