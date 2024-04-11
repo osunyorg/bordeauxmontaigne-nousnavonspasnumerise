@@ -62,6 +62,11 @@ ol
             display: inline
 
 .document-content
+    @media screen and (max-width: $grid-max-width)
+        padding-left: 30vw
+    @media screen and (min-width: $grid-max-width)
+        padding-left: 0vw
+    
     .container > .lead
         margin-bottom: $spacing-5
 
