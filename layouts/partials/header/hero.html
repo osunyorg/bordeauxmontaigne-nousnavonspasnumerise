@@ -52,7 +52,7 @@
   {{ end }}
 </header>
 {{ if not .image }}
-<img class="bg-image-default" src="/assets/images/default-hero.webp" alt="image par défaut">
+<img class="bg-image-default" src="/assets/images/hero.webp" alt="image par défaut">
 {{ else }}
   {{ $media := partial "GetMedia" .image.id }}
    <img class="bg-image-custom" src="{{ $media.url }}">
