@@ -36,7 +36,6 @@ html
     span
         line-height: 20px
         margin: 0
-        transform: rotate(10deg)
     @include media-breakpoint-down(md)
         transform: rotate(-10deg)
     .container
@@ -56,6 +55,7 @@ html
     .grid-full
         background-color: white
     .grid-name
+        transform: rotate(10deg)
         display: grid
         width: fit-content
         grid-template-columns: 1fr 1fr
@@ -74,6 +74,7 @@ html
                 text-align: center !important
     .last-names-flex
         display: flex
+        transform: rotate(10deg)
         @include media-breakpoint-down(md)
             flex-direction: column
             align-items: center
