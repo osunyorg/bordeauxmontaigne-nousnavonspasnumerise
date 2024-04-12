@@ -21,9 +21,20 @@
       <section class="blank"></section>
       
       <section class="intro">
-        <h2>{{ .Params.summary }}</h2>
-        {{ with index .Params.contents 0 }}
-          {{ partial "PrepareHTML" .data.text }}
+        <h2>{{ .Title }}</h2>
+        <h3>{{ .Params.summary }}</h3>
+        
+        {{ range .Params.contents }}
+          {{ if eq .kind "heading" }}
+            <h4> {{ .title }}</h4>
+          {{ end }}
+
+          {{ if eq .template "chapter" }}
+            {{ with .title }}
+              <h4>{{ . }}</h4>
+            {{ end}}
+            {{ partial "PrepareHTML" .data.text }}
+          {{ end }}
         {{ end }}
       </section>
     {{ end }}
