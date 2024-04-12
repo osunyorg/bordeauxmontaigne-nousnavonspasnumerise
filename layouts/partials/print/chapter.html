@@ -1,6 +1,7 @@
 <section class="chapter">
   <h2>{{ .Title }}</h2>
   <h3>{{ .Params.summary }}</h3>
+
   {{ range .Params.contents }}
     {{ if eq .kind "heading" }}
       <h4> {{ .title }}</h4>
@@ -11,6 +12,17 @@
         <h4>{{ . }}</h4>
       {{ end}}
       {{ partial "PrepareHTML" .data.text }}
+    {{ end }}
+
+    {{ if eq .template "image" }}
+      <div class="image">
+        {{ $media := partial "GetMedia" .data.image.id }}
+        <img src="{{ $media.url }}">
+
+        {{ with .data.text }}
+          {{ partial "PrepareHTML" . }}
+        {{ end }}
+      </div>
     {{ end }}
   {{ end }}
 </section>
