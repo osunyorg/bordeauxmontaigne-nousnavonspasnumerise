@@ -6,8 +6,8 @@ items:
   kind: page
   children: []
 - title: Imprimer
-  target: "/chapitre-1/"
-  kind: page
+  target: "/imprimer"
+  kind: url
   children: []
 - title: Mentions légales
   target: "/mentions-legales/"
