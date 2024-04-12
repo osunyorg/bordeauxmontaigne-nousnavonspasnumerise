@@ -6,7 +6,7 @@ items:
   kind: page
   children: []
 - title: Imprimer
-  target: "/imprimer"
+  target: https://nousnavonspasnumerise.mmibordeaux.com/imprimer/
   kind: url
   children: []
 - title: Mentions légales
