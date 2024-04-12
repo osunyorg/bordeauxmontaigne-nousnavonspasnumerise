@@ -23,6 +23,8 @@
 
 <header
   class="hero {{ if .image }}hero--with-image hero--image-{{- $direction }}{{ end }} {{ if $breadcrumb_is_after_hero }} hero--no-margin {{ end }}">
+  {{ if not .image }}
+
   <div class="hero-top-container">
     <div class="cross-names">
       <img src="/assets/images/icons/cross.svg" alt="cross icon" width="15px">
@@ -36,62 +38,8 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="content">
-        <!-- <div class="hero-text">
-            {{ if or $subtitle $description }}
-            <hgroup>
-              <h1>Numérisé</h1>
-              {{ if $subtitle }}
-              <p {{ if $subtitle_is_summary }} class="lead" {{ end }}>{{ partial "PrepareHTML" $subtitle }}</p>
-              {{ end }}
-              {{ if $description }}
-              <p>{{ partial "PrepareHTML" .description }}</p>
-              {{ end }}
-            </hgroup>
-            {{ else }}
-            <h1>Numérisé</h1>
-            {{ end }}
-  
-            {{ with $button }}
-            {{ if and .display .target .label }}
-            <a href="{{ .target }}" class="btn">{{ .label }}</a>
-            {{ end }}
-            {{ end }}
-  
-            {{ if .hero_text_complement }}
-            {{ partial .hero_text_complement .context }}
-            {{ end }}
-          </div> -->
-        <!-- {{ if .image }}
-            <figure>
-              {{ partial "commons/image.html"
-                (dict
-                  "image"    .image
-                  "sizes"    ( .sizes | default site.Params.image_sizes.design_system.hero )
-                  "lazy"     false
-                ) }}
-              {{ if not site.Params.image_sizes.design_system.lightbox.disabled }}
-                <a  class="glightbox"
-                    role="button"
-                    data-glightbox="type: image;{{ with .image.credit }}description: {{ partial "PrepareHTML" . }}{{ end }}"
-                    href="{{ partial "GetLightboxUrl" .image }}"
-                    title="{{- i18n "commons.lightbox.link.title" -}}"
-                    aria-label="{{- i18n "commons.lightbox.link.title" -}}">
-                </a>
-              {{ end }}
-              {{ with partial "GetTextFromHTML" .image.credit }}
-                <figcaption tabindex="0">
-                  <div class="credit-content">
-                    {{ partial "PrepareHTML" . }}
-                  </div>
-                </figcaption>
-              {{ end }}
-            </figure>
-          {{ end }} -->
-      </div>
-    </div>
   </div>
+  {{ end }}
 
   {{ if .hero_complement }}
   {{ partial .hero_complement .context }}
@@ -103,9 +51,15 @@
   </div>
   {{ end }}
 </header>
-<img class="bg-image" src="/assets/images/hero.webp" alt="tablette grisée">
+{{ if not .image }}
+<img class="bg-image-default" src="/assets/images/hero.webp" alt="image par défaut">
+{{ else }}
+  {{ $media := partial "GetMedia" .image.id }}
+   <img class="bg-image-custom" src="{{ $media.url }}">
+{{ end }}
 
-<div class="title">
+{{ if not .image }}
+<div class="title-default">
   <div class="title-flex">
     <div id="not-flex">
       <p>Nous n’avons pas</p>
@@ -114,6 +68,13 @@
     </h1>
   </div>
 </div>
+{{ else }}
+<div class="title-custom ">
+  <div class="title-flex">
+    <h1>{{.title}}</h1>
+  </div>
+</div>
+{{ end }}
 {{ if and $display_breadcrumb $breadcrumb_is_after_hero }}
 <div class="container breadcrumb-container">
   {{ partial "header/breadcrumbs.html" .context }}
