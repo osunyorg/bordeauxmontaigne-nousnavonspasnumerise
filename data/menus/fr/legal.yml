@@ -2,7 +2,7 @@
 title: Informations légales
 items:
 - title: Lire
-  target: "/chapitre-1/"
+  target: "/"
   kind: page
   children: []
 - title: Imprimer
