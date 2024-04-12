@@ -1,6 +1,10 @@
 <section class="chapter">
-  <h2>{{ .Title }}</h2>
-  <h3>{{ .Params.summary }}</h3>
+  <h2>
+    {{ .Title }}
+    {{ with .Params.header_text }}
+    : {{ .}}
+    {{ end }}
+  </h2>
 
   {{ range .Params.contents }}
     {{ if eq .kind "heading" }}
