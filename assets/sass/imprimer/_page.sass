@@ -32,14 +32,12 @@ body
 @page:left
     margin-left: 25mm
     margin-right: 15mm
+    @include paginated
 
 @page:right
     margin-left: 15mm
     margin-right: 25mm
     @include paginated
-
-@page:nth(3)
-    @include unpaginated
 
 @page back
     margin: 0
