@@ -1,0 +1,14 @@
+<span>
+    {{ .Title }}
+    {{ with .Params.header_text }}
+        : {{ .}}
+    {{ end }}
+</span>
+
+<ol>
+    {{ range .Params.contents }}
+        {{ if eq .kind "heading" }}
+        <li>{{ .title }}</li>
+        {{ end }}
+    {{ end }}
+</ol>

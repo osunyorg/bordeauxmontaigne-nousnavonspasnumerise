@@ -1,0 +1,74 @@
+@media print
+
+    #list-toc-generated
+        padding: 0
+        list-style: none
+        font-size: 9pt
+
+        .toc-element 
+            a
+                color: black
+                text-decoration: none
+                &::after
+                    content: target-counter(attr(href), page)
+                    float: right
+
+        .toc-element-level-1
+            margin-top: 10pt
+            font-weight: bold
+
+        .toc-element-level-2
+            margin-left: 10pt
+
+
+        /* counters */  
+        counter-reset: counterTocLevel1
+
+        .toc-element-level-1 
+            counter-increment: counterTocLevel1 
+            counter-reset: counterTocLevel2 
+            counter-reset: counterTocLevel3 
+
+            &::before 
+                content: counter(counterTocLevel1) ". "
+                padding-right: 5pt
+
+        .toc-element-level-2 
+            counter-increment: counterTocLevel2 
+            counter-reset: counterTocLevel3 
+
+            &::before 
+                content: counter(counterTocLevel1) ". " counter(counterTocLevel2) ". "
+                padding-right: 5pt
+
+
+
+
+    /*  leader() doesn't work for now, replace with the hack bellow */
+    /* #list-toc-generated .toc-element a::after
+        content: leader('.') " p. " target-counter(attr(href), page)
+        float: right */
+
+    /* hack for leaders */
+
+    // #list-toc-generated
+    //     overflow-x: hidden
+
+    // #list-toc-generated .toc-element::after
+    //     content: "................................................................................................................................................."
+    //     float: left
+    //     width: 0
+    //     padding-left: 5px
+    //     letter-spacing: 2px
+
+    // #list-toc-generated .toc-element
+    //     display: flex 
+
+    // #list-toc-generated .toc-element a::after
+    //     position: absolute
+    //     right: 0
+    //     background-color: white
+    //     padding-left: 6px
+
+    // #list-toc-generated .toc-element a
+    //     right: 0 
