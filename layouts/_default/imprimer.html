@@ -68,15 +68,12 @@
     <script type="text/javascript" src="/assets/pagedjs/paged.polyfill.min.js"></script>
     <script type="text/javascript" src="/assets/pagedjs/paged.toc.js"></script>
     <script>
+      const appendPageNumberToAnchor = (anchor, pageNumber) => {
+        const anchorPageNumber = document.createElement('span');
+        anchorPageNumber.textContent = pageNumber
 
-      const findAncestor = (el, selector) => {
-        while ((el = el.parentElement) && !((el.matches || el.matchesSelector).call(el,selector)));
-        return el;
+        anchor.append(anchorPageNumber)
       }
-      
-      const titleOf = (anchor) => document.getElementById(new URL(anchor.href).hash.replace('#',''));
-      const pageContaining = (el) => findAncestor(el, '.pagedjs_page')
-      const numberOf = (pageEl) => pageEl.dataset.pageNumber
 
       class handlers extends Paged.Handler {
         constructor(chunker, polisher, caller) {
@@ -91,17 +88,18 @@
           });
         }
 
-        afterRendered() {
-          const tocAnchors = document.querySelectorAll('.toc-element a');
+        afterPageLayout(pageElement, page, breakToken) {
+          const pageNumber = pageElement.dataset.pageNumber;
+          
+          const titles = pageElement.querySelectorAll('.title-element')
+          titles.forEach(title=>{
+            const anchors = document.querySelectorAll(`.toc-element a[href="#${title.id}"]`);
 
-          tocAnchors.forEach(anchor=>{
-            const anchorPageNumber = document.createElement('span');
-            anchorPageNumber.textContent = numberOf(pageContaining(titleOf(anchor)));
-
-            anchor.append(anchorPageNumber)
+            anchors.forEach(anchor=>{
+              appendPageNumberToAnchor(anchor, pageNumber)
+            })
           })
-        }
-        
+        }   
       }
       Paged.registerHandlers(handlers);
 
