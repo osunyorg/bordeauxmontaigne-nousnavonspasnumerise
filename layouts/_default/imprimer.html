@@ -23,7 +23,9 @@
       
       <section class="intro">
         <h2>{{ .Title }}</h2>
-        <h3>{{ .Params.summary }}</h3>
+        {{ with .Params.summary }}
+          <h3>{{ . }}</h3>
+        {{ end }}
         
         {{ range .Params.contents }}
           {{ if eq .kind "heading" }}
@@ -39,6 +41,13 @@
         {{ end }}
       </section>
     {{ end }}
+
+    <section class="toc">
+      <h2>Table des matières</h2>
+    
+      <div id="toc-list">
+      </div>
+    </section>
 
     {{ with site.GetPage "/pages/chapitre-1" }}
       {{ partial "print/chapter" . }}
@@ -56,7 +65,44 @@
       <img src="/assets/images/imprimer/back.jpg">
     </section>
 
+    <script type="text/javascript" src="/assets/pagedjs/paged.polyfill.min.js"></script>
+    <script type="text/javascript" src="/assets/pagedjs/paged.toc.js"></script>
     <script>
+      const appendPageNumberToAnchor = (anchor, pageNumber) => {
+        const anchorPageNumber = document.createElement('span');
+        anchorPageNumber.textContent = pageNumber
+
+        anchor.append(anchorPageNumber)
+      }
+
+      class handlers extends Paged.Handler {
+        constructor(chunker, polisher, caller) {
+          super(chunker, polisher, caller);
+        }
+
+        beforeParsed(content){          
+          createToc({
+            content: content,
+            tocElement: '#toc-list',
+            titleElements: [ '.chapter h2', '.chapter h3' ]
+          });
+        }
+
+        afterPageLayout(pageElement, page, breakToken) {
+          const pageNumber = pageElement.dataset.pageNumber;
+          
+          const titles = pageElement.querySelectorAll('.title-element')
+          titles.forEach(title=>{
+            const anchors = document.querySelectorAll(`.toc-element a[href="#${title.id}"]`);
+
+            anchors.forEach(anchor=>{
+              appendPageNumberToAnchor(anchor, pageNumber)
+            })
+          })
+        }   
+      }
+      Paged.registerHandlers(handlers);
+
       const anchorTags = document.getElementsByTagName('a');
       for (let i = anchorTags.length - 1; i >= 0; i--) {
         const aTag = anchorTags[i];
@@ -65,7 +111,5 @@
         aTag.append(noteTag);
       }
     </script>
-
-    <script type="text/javascript" src="/assets/pagedjs/paged.polyfill.min.js" defer async></script>
   </body>
 </html>
