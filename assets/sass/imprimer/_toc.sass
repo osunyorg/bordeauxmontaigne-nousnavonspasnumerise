@@ -2,16 +2,30 @@
 
     #list-toc-generated
         padding: 0
+        padding-top: 10pt
         list-style: none
         font-size: 9pt
+        overflow-x: hidden
 
         .toc-element 
+            display: flex 
+
+            &::after
+                content: "................................................................................................................................................."
+                float: left
+                width: 0
+                padding-left: 3pt
+                letter-spacing: 3pt
+
             a
                 color: black
                 text-decoration: none
                 
                 span
-                    float: right
+                    position: absolute
+                    background: white
+                    padding-left: 3pt
+                    right: 0
 
         .toc-element-level-1
             margin-top: 10pt
@@ -38,5 +52,5 @@
             counter-reset: counterTocLevel3 
 
             &::before 
-                content: counter(counterTocLevel1) ". " counter(counterTocLevel2) ". "
+                content: counter(counterTocLevel1) "." counter(counterTocLevel2) "."
                 padding-right: 5pt
