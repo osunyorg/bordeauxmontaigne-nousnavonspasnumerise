@@ -1,34 +1,3 @@
-html
-    overflow-x: hidden
-.page-with-blocks
-    overflow-x: hidden
-.bg-image-default
-    z-index: -2
-    position: absolute
-    @include media-breakpoint-down(md)
-        position: relative
-    @include media-breakpoint-down(sm)
-        height: 300px
-        width: auto
-        transform: rotate(10deg) scale(1.3) translate(61px, -50px)
-
-    right: -120px
-    top: -120px
-    max-width: 700px
-    width: 60vw
-    transform: rotate(10deg) scale(1.2)
-
-.bg-image-custom
-    z-index: -2
-    position: absolute
-    @include media-breakpoint-down(md)
-        position: relative
-    @include media-breakpoint-down(sm)
-        display: none
-
-    left: 0
-    top: 0
-
 .hero
     width: fit-content
     @include media-breakpoint-down(md)
@@ -93,28 +62,10 @@ html
             margin-left: 0
         img
             transform: translateY(2px)
-
-.hero
-    // Support gradients
-    // background: $hero-background-color
-    // // Fallback color
-    // background-color: $hero-background-color
-    color: $hero-color
-    width: fit-content
-    min-height: $hero-height
-    padding-bottom: $spacing-5
-    padding-top: var(--header-height)
-    position: relative
-    margin-bottom: $spacing-5
-    @include media-breakpoint-up(desktop)
-        min-height: $hero-height-desktop
-    *:focus-visible
-        outline-color: $hero-color
     .content
         width: fit-content
         display: flex
         flex-direction: column
-        align-items: start
         .hero-text
             margin-top: 0
             width: 100%
@@ -122,85 +73,18 @@ html
             align-self: center
         h1
             text-align: center
-        h1 + p
-            margin-top: $spacing-3
-        .btn
-            margin-top: $spacing-3
-        .lead
-            @include lead-hero
-        figure
-            position: relative
-            &, img, picture
-                display: block
-            img
-                width: 100%
-                height: auto
-            @include collapsed-figcaption
-
-    .breadcrumb-nav + .content
-        padding-top: 0
     .content + .breadcrumb-nav
         margin-top: 0
     &--no-margin
-        margin-bottom: 0
         & + .document-content
             margin-top: 0
     &--with-image
         margin-bottom: 30vh
-        figure
-            position: relative
-            > a
-                @include stretched-link
-    @include media-breakpoint-down(desktop)
-        .content
-            padding-top: 0
-        &--with-image
-            padding-bottom: 0
-            .content
-                .hero-text
-                    margin-bottom: $spacing-4
-        &--image-landscape
-            .content
-                figure
-                    margin-left: var(--grid-gutter-negative)
-                    margin-right: var(--grid-gutter-negative)
-        &--image-portrait, &--image-square
-            .container
-                display: flex
-                flex-direction: column
-                margin-bottom: $spacing-7
-            figure
-                margin-bottom: calc(#{-$spacing-7} + #{$spacing-4})
-
+    
     @include media-breakpoint-up(desktop)
         .content
             padding-top: 0
-        .hero-text
-            width: columns(9)
-        &--with-image
-            .content
-                display: flex
-                justify-content: space-between
-                .hero-text
-                    width: columns(7)
-                figure
-                    width: columns(5)
 
-        &--image-portrait, &--image-square
-            .breadcrumb-nav
-                -webkit-mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%)
-                mask-image: linear-gradient(to right, black 0%, black 90%, transparent 100%)
-                .breadcrumb
-                    padding-right: 10%
-            .content
-                .hero-text
-                    width: columns(8)
-                figure
-                    width: columns(3)
-    + .breadcrumb-container
-        margin-top: 0
-        @include media-breakpoint-down(desktop)
-            margin-bottom: $spacing-5
 .title-default
     transform: rotate(-13deg) translateY(-200px) translateX(50px)
     @include media-breakpoint-down(lg)

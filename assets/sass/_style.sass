@@ -1,3 +1,52 @@
+html
+    overflow-x: hidden
+.page-with-blocks
+    overflow-x: hidden
+.bg-image-default
+    z-index: -2
+    position: absolute
+    @include media-breakpoint-down(md)
+        position: relative
+    @include media-breakpoint-down(sm)
+        height: 300px
+        width: auto
+        transform: rotate(10deg) scale(1.3) translate(61px, -50px)
+
+    right: -120px
+    top: -120px
+    max-width: 700px
+    width: 60vw
+    transform: rotate(10deg) scale(1.2)
+
+.bg-image-custom
+    z-index: -2
+    position: absolute
+    @include media-breakpoint-down(md)
+        position: relative
+    @include media-breakpoint-down(sm)
+        display: none
+
+    left: 0
+    top: 0
+
+::selection
+    background: $blue
+    color: $color-background
+
+.document-content
+    h2
+        font-size: 48px
+        font-weight: 600
+
+    p
+        font-size: 18px
+
+.modal
+    display: flex
+    .modal-content
+        @include media-breakpoint-up(desktop)
+            max-height: initial
+
 .block-pages
     .grid, .cards, .list
         .page-title
@@ -67,3 +116,35 @@ a,
         font-size: 18px
         border-radius: 2px
         white-space: nowrap
+
+
+footer#document-footer
+    ul
+        display: flex
+        align-items: baseline
+        justify-content: center
+        gap: 16px
+        @include media-breakpoint-up(desktop)
+            display: flex
+            justify-content: space-around
+            align-items: baseline
+    .footer
+        &-credit
+            text-align: center
+    @include media-breakpoint-up(desktop)
+        .container
+            align-items: center !important
+            + .container
+                display: block
+                align-items: center
+                ul
+                    display: flex
+                    justify-content: center
+                    gap: 16px
+                    @include list-reset
+                    li + li
+                        margin-top: 0
+        .footer
+            &-site, &-social
+                text-align: center
+
