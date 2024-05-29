@@ -1,0 +1,60 @@
+.block-pages
+    .grid, .cards, .list
+        .page-title
+            a
+                background-color: $color-background
+                border-style: dashed
+                border-width: 1px
+                color: $color-text
+                font-size: 18px
+                padding: $spacing-2 $spacing-3
+                white-space: nowrap
+                width: fit-content
+                &:hover
+                    background-color: black
+                    color: white
+                    border-color: black
+            + p
+                width: fit-content
+    &--list
+        ul
+            li
+                > a::before
+                    width: fit-content
+        @include media-breakpoint-up(desktop)
+            ul:not(.title-only)
+                margin-top: var(--grid-gutter)
+        @include in-page-without-sidebar
+            .block-title
+                a
+                    width: fit-content
+            &.with-description
+                .block-content
+                    .top + ul
+                        margin-top: $spacing-2
+                        article
+                            margin-top: $spacing-5
+    &--alternate
+        .grid
+            article .media img
+            aspect-ratio: unset
+        @include media-breakpoint-up(desktop)
+            article
+                width: columns(4)
+                &:not(:first-child)
+                    margin-top: -5%
+                &:nth-child(even)
+                    margin-left: auto
+                &.image-portrait
+                    + .image-portrait
+                        margin-top: -30%
+                    + .image-square,
+                    + .image-landscape
+                        margin-top: -15%
+        @include in-page-without-sidebar
+            .grid
+                width: columns(10)
+                margin-left: auto
+                margin-right: auto
+                article
+                    width: columns(4)
