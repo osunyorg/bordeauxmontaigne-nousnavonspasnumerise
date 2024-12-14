@@ -5,6 +5,7 @@ items:
   target: "/"
   kind: page
   children: []
+  path: "/"
   file: content/fr/_index.html
 - title: Imprimer
   target: https://nousnavonspasnumerise.mmibordeaux.com/imprimer/
@@ -14,10 +15,12 @@ items:
   target: "/mentions-legales/"
   kind: page
   children: []
+  path: "/pages/mentions-legales"
   file: content/fr/pages/mentions-legales/_index.html
 - title: Plan du site
   target: "/plan-du-site/"
   kind: page
   children: []
+  path: "/pages/plan-du-site"
   file: content/fr/pages/plan-du-site/_index.html
 
