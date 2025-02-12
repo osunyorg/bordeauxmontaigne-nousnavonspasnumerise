@@ -2,6 +2,11 @@
 
 baseURL: https://nousnavonspasnumerise.mmibordeaux.com
 
+## OSUNY
+osuny:
+  website:
+    id: 27184a30-d308-40ef-a9b0-2e5d462c4fbb
+
 ## LANGUAGE
 defaultContentLanguage: fr
 defaultContentLanguageInSubdir: false
