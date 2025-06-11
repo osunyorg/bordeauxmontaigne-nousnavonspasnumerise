@@ -10,8 +10,6 @@ fr:
   params:
     contact_details:
 
-  permalinks:
-    pages_categories: /:slug/
   taxonomies:
     administrator: administrators
     author: authors
