@@ -4,7 +4,7 @@
 {{ $subtitle := .subtitle }}
 {{ $description := .description }}
 {{ if .image }}
-{{ $direction = partial "GetImageDirection" .image }}
+{{ $direction = partial "commons/image/helpers/GetDirection" .image }}
 {{ end }}
 
 {{ $summary := .context.Params.summary | safeHTML }}
