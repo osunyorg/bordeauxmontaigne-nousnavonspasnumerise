@@ -15,7 +15,7 @@
       {{ with .title }}
         <h4>{{ . }}</h4>
       {{ end}}
-      {{ partial "PrepareHTML" .data.text }}
+      {{ safeHTML .data.text }}
     {{ end }}
 
     {{ if eq .template "image" }}
@@ -24,7 +24,7 @@
         <img src="{{ $media.url }}">
 
         {{ with .data.text }}
-          {{ partial "PrepareHTML" . }}
+          {{ safeHTML . }}
         {{ end }}
       </div>
     {{ end }}
