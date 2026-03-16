@@ -42,7 +42,7 @@
   {{ end }}
 
   {{ if .hero_complement }}
-  {{ partial .hero_complement .context }}
+    {{ .hero_complement }}
   {{ end }}
 
   {{ if and $display_breadcrumb (eq site.Params.breadcrumb.position "hero-end") }}
