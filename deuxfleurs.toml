@@ -15,22 +15,22 @@ for = ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.webp"]
 Cache-Control = "max-age=31536000, no-transform, public"
 
 [[redirects]]
-from = "/chapitre-3/"
+from = "/chapitre-3/index.html"
 to = "/autopsie/"
 
 [[redirects]]
-from = "/equipe-editoriale/"
+from = "/equipe-editoriale/index.html"
 to = "/equipe/equipe-editoriale/"
 
 [[redirects]]
-from = "/livrable/chapitre-1/"
+from = "/livrable/chapitre-1/index.html"
 to = "/chapitre-1/"
 
 [[redirects]]
-from = "/livrable/chapitre-2/"
+from = "/livrable/chapitre-2/index.html"
 to = "/chapitre-2/"
 
 [[redirects]]
-from = "/livrable/chapitre-3/"
+from = "/livrable/chapitre-3/index.html"
 to = "/autopsie/"
 
